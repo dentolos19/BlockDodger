@@ -24,15 +24,13 @@ public class MenuControls : MonoBehaviour
 
     public void SaveOptions()
     {
-        var settings = Configuration.Load();
-        settings.Sensitivity = optionsSensitivity.value * 100;
-        settings.Save();
+        Global.Settings.Sensitivity = optionsSensitivity.value * 100;
+        Global.Settings.Save();
     }
 
     public void LoadOptions()
     {
-        var settings = Configuration.Load();
-        optionsSensitivity.value = settings.Sensitivity / 100;
+        optionsSensitivity.value = Global.Settings.Sensitivity / 100;
     }
 
 

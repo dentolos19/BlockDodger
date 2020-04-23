@@ -13,8 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        var settings = Configuration.Load();
-        sensitivity = settings.Sensitivity;
+        sensitivity = Global.Settings.Sensitivity;
     }
 
     private void FixedUpdate()
@@ -29,10 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        StartCoroutine(Restart());
+        StartCoroutine(Died());
     }
 
-    private static IEnumerator Restart()
+    private static IEnumerator Died()
     {
         Time.timeScale = 1f / 10;
         Time.fixedDeltaTime /= 10;

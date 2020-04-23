@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        sensitivity = Global.Settings.Sensitivity;
+        sensitivity = Game.Settings.Sensitivity;
     }
 
     private void FixedUpdate()

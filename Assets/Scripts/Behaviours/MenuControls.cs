@@ -24,13 +24,13 @@ public class MenuControls : MonoBehaviour
 
     public void SaveOptions()
     {
-        Global.Settings.Sensitivity = optionsSensitivity.value * 100;
-        Global.Settings.Save();
+        Game.Settings.Sensitivity = optionsSensitivity.value * 100;
+        Game.Settings.Save();
     }
 
     public void LoadOptions()
     {
-        optionsSensitivity.value = Global.Settings.Sensitivity / 100;
+        optionsSensitivity.value = Game.Settings.Sensitivity / 100;
     }
 
 

@@ -9,13 +9,13 @@ public class EndDisplayer : MonoBehaviour
 
     private void Start()
     {
-        if (Global.EndPassArgs > Global.Settings.HighestScore)
+        if (Game.EndPassArgs > Game.Settings.HighestScore)
         {
-            Global.Settings.HighestScore = Global.EndPassArgs;
-            Global.Settings.Save();
+            Game.Settings.HighestScore = Game.EndPassArgs;
+            Game.Settings.Save();
         }
-        currentScoreText.text = $"CURRENT SCORE: {Global.EndPassArgs}";
-        highestScoreText.text = $"HIGHEST SCORE: {Global.Settings.HighestScore}";
+        currentScoreText.text = $"CURRENT SCORE: {Game.EndPassArgs}";
+        highestScoreText.text = $"HIGHEST SCORE: {Game.Settings.HighestScore}";
     }
 
 }

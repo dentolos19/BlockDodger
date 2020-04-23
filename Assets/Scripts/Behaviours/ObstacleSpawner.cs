@@ -15,7 +15,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         _score = -1;
-        Global.EndPassArgs = _score;
+        Game.EndPassArgs = _score;
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
             if (random != index)
                 Instantiate(prefab, points[index].position, Quaternion.identity);
         _score++;
-        Global.EndPassArgs = _score;
+        Game.EndPassArgs = _score;
     }
 
 }

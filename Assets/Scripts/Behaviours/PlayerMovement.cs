@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        var settings = Configuration.Load();
+        sensitivity = settings.Sensitivity;
     }
 
     private void FixedUpdate()
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1f / 10);
         Time.timeScale = 1f;
         Time.fixedDeltaTime *= 10;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(2);
     }
 
 }

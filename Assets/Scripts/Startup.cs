@@ -2,11 +2,11 @@
 using System.Net;
 using UnityEngine;
 
-public static class GameStartup
+public static class Startup
 {
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void Startup()
+    public static void Initialize()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
@@ -18,7 +18,7 @@ public static class GameStartup
             return;
         if (Application.internetReachability == NetworkReachability.NotReachable)
             return;
-        var client  = new WebClient();
+        var client = new WebClient();
         var data = client.DownloadString("https://raw.githubusercontent.com/dentolos19/DodgeTheBlocks/master/VERSION");
         client.Dispose();
         if (Version.Parse(data) > Version.Parse(Application.version))

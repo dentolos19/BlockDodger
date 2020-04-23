@@ -1,28 +1,31 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class UserConfiguration
+public class Configuration
 {
 
     private static readonly string Source = Path.Combine(Application.persistentDataPath, "DodgeTheBlocks.cfg");
-    private static readonly XmlSerializer Serializer = new XmlSerializer(typeof(UserConfiguration));
+    private static readonly XmlSerializer Serializer = new XmlSerializer(typeof(Configuration));
 
+    public float Sensitivity { get; set; } = 20f;
     public int HighestScore { get; set; } = 0;
 
     public void Save()
     {
-        using (var stream = new FileStream(Source, FileMode.Create))
-            Serializer.Serialize(stream, this);
+        var stream = new FileStream(Source, FileMode.Create);
+        Serializer.Serialize(stream, this);
+        stream.Close();
     }
 
-    public static UserConfiguration Load()
+    public static Configuration Load()
     {
         if (!File.Exists(Source))
-            return new UserConfiguration();
-        using (var stream = new FileStream(Source, FileMode.Open))
-            return Serializer.Deserialize(stream) as UserConfiguration;
+            return new Configuration();
+        var stream = new FileStream(Source, FileMode.Open);
+        var result = Serializer.Deserialize(stream) as Configuration;
+        stream.Close();
+        return result;
     }
 
 }

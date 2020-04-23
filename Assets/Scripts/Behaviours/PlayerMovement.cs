@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -38,6 +39,14 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1f / 10);
         Time.timeScale = 1f;
         Time.fixedDeltaTime *= 10;
+        Game.DeathAmount++;
+        if (Game.DeathAmount == 10)
+        {
+            if (Advertisement.isInitialized)
+                if (Advertisement.IsReady())
+                    Advertisement.Show();
+            Game.DeathAmount = 0;
+        }
         SceneManager.LoadScene(2);
     }
 

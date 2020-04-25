@@ -8,8 +8,9 @@ public class Configuration
     private static readonly string Source = Path.Combine(Application.persistentDataPath, "DodgeTheBlocks.cfg");
     private static readonly XmlSerializer Serializer = new XmlSerializer(typeof(Configuration));
 
+    public bool UseTouchControls { get; set; } = false;
     public float Sensitivity { get; set; } = 20f;
-    public int HighestScore { get; set; } = 0;
+    public int HighestScore { get; set; }
 
     public void Save()
     {

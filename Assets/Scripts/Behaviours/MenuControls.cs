@@ -6,6 +6,7 @@ public class MenuControls : MonoBehaviour
 {
 
     public Slider optionsSensitivity;
+    public Toggle optionsUseTouchControls;
 
     public void Play()
     {
@@ -25,12 +26,14 @@ public class MenuControls : MonoBehaviour
     public void SaveOptions()
     {
         Game.Settings.Sensitivity = optionsSensitivity.value * 100;
+        Game.Settings.UseTouchControls = optionsUseTouchControls.isOn;
         Game.Settings.Save();
     }
 
     public void LoadOptions()
     {
         optionsSensitivity.value = Game.Settings.Sensitivity / 100;
+        optionsUseTouchControls.isOn = Game.Settings.UseTouchControls;
     }
 
 

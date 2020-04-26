@@ -1,16 +1,18 @@
 ﻿using TMPro;
 using UnityEngine;
+using Random = System.Random;
 
 public class ObstacleSpawner : MonoBehaviour
 {
 
+    private readonly Random _randomizer = new Random();
+
     private int _score;
     private float _spawnTime = 2f;
-    private readonly System.Random _randomizer = new System.Random();
-
-    public GameObject prefab;
     public TextMeshProUGUI counter;
     public Transform[] points;
+
+    public GameObject prefab;
 
     private void Start()
     {

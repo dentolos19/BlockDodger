@@ -36,5 +36,4 @@ public class MenuControls : MonoBehaviour
         optionsUseTouchControls.isOn = Game.Settings.UseTouchControls;
     }
 
-
 }

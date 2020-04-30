@@ -1,22 +1,22 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
 
-    public static int Score { get; private set; }
-    public static int Deaths { get; private set; }
-    
-    private bool _isMobilePlatform;
-    private bool _useTouchControls;
     private Camera _camera;
+
+    private bool _isMobilePlatform;
     private Rigidbody2D _rigidbody;
-    
-    public float sensitivity = 20;
+    private bool _useTouchControls;
     public TextMeshProUGUI counter;
+
+    public float sensitivity = 20;
+
+    public static int Score { get; private set; }
+    private static int Deaths { get; set; }
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         sensitivity = Game.Settings.Sensitivity;
         Score = 0;
     }
-    
+
     private void FixedUpdate()
     {
         var input = Input.GetAxis("Horizontal") * sensitivity * Time.fixedDeltaTime;
@@ -74,12 +74,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f / 10);
         Time.timeScale = 1;
         Time.fixedDeltaTime *= 10;
-        if (Deaths >= 10)
-        {
-            if (Advertisement.isInitialized && Advertisement.IsReady())
-                Advertisement.Show();
+        if (Deaths >= 10) // Place Unity Ads Here
             Deaths = 0;
-        }
         SceneManager.LoadScene(2);
     }
 

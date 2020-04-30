@@ -7,7 +7,7 @@ public class End : MonoBehaviour
 
     public TextMeshProUGUI currentScoreCounter;
     public TextMeshProUGUI highestScoreCounter;
-    
+
     private void Start()
     {
         if (Player.Score >= Game.Settings.HighestScore)

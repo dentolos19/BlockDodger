@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using Random = System.Random;
 
 public class Spawner : MonoBehaviour
 {
 
+    private Random _randomizer;
+
     private float _time;
-    private System.Random _randomizer;
 
     public GameObject goalPrefab;
     public GameObject obstaclePrefab;
@@ -12,7 +14,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        _randomizer = new System.Random();
+        _randomizer = new Random();
     }
 
     private void Update()

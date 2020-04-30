@@ -5,21 +5,13 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
 
-    public GameObject mainMenu;
-    public GameObject optionsMenu;
-    public GameObject introMenu;
     public Slider optionsSensitivity;
     public Toggle optionsUseTouchControls;
-    
+
     private void Start()
     {
         optionsSensitivity.value = Game.Settings.Sensitivity;
         optionsUseTouchControls.isOn = Game.Settings.UseTouchControls;
-        if (Game.Settings.PrivacyPolicyAgreed)
-            return;
-        mainMenu.SetActive(false);
-        optionsMenu.SetActive(false);
-        introMenu.SetActive(true);
     }
 
     public void Play()
@@ -39,18 +31,4 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
-    public void LearnMore()
-    {
-        Application.OpenURL("https://unity3d.com/legal/privacy-policy");
-    }
-
-    public void Agree()
-    {
-        Game.Settings.PrivacyPolicyAgreed = true;
-        Game.Settings.Save();
-        mainMenu.SetActive(true);
-        optionsMenu.SetActive(false);
-        introMenu.SetActive(false);
-    }
-    
 }

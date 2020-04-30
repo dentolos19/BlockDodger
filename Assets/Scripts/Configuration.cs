@@ -11,8 +11,7 @@ public class Configuration
     public float Sensitivity { get; set; } = 20;
     public bool UseTouchControls { get; set; }
     public int HighestScore { get; set; }
-    public bool PrivacyPolicyAgreed { get; set; }
-    
+
     public void Save()
     {
         var stream = new FileStream(Source, FileMode.Create);

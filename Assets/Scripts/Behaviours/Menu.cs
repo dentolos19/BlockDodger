@@ -7,17 +7,18 @@ public class Menu : MonoBehaviour
 {
 
     public GameObject agreementMenu;
-
-    public GameObject mainMenu;
-
-    public TMP_Dropdown optionsControls;
     public GameObject optionsMenu;
+    public GameObject mainMenu;
+    
     public Slider optionsSensitivity;
-
+    public TMP_Dropdown optionsControls;
+    public Toggle optionsMuteGameSounds;
+    
     private void Start()
     {
         optionsSensitivity.value = Game.Settings.Sensitivity;
         optionsControls.value = (int)Game.Settings.Control;
+        optionsMuteGameSounds.isOn = Game.Settings.MuteGameSounds;
         if (Game.Settings.PrivacyPolicyAgreed)
             return;
         mainMenu.SetActive(false);
@@ -34,6 +35,11 @@ public class Menu : MonoBehaviour
     {
         Game.Settings.Sensitivity = optionsSensitivity.value;
         Game.Settings.Control = (Configuration.GameControl)optionsControls.value;
+        Game.Settings.MuteGameSounds = optionsMuteGameSounds.isOn;
+        if (Game.Settings.MuteGameSounds)
+            Music.Instance.Stop();
+        else
+            Music.Instance.Play();
         Game.Settings.Save();
     }
 

@@ -245,7 +245,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5882353, g: 0.1764706, b: 0.1764706, a: 0}
+  m_BackGroundColor: {r: 0.39215687, g: 0.627451, b: 0.627451, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -604,7 +604,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 3e7e4cb0993374f46bae87f535aba8e4, type: 3}
-  m_Color: {r: 0.8235294, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.3529412, g: 0.54901963, b: 0.54901963, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -956,5 +956,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff687745a9668241ac00cbdb536beb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 20
   counter: {fileID: 1822122524}
+  sensitivity: 20

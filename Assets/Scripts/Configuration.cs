@@ -21,6 +21,7 @@ public class Configuration
     public GameControl Control { get; set; }
     public int HighestScore { get; set; }
     public bool PrivacyPolicyAgreed { get; set; }
+    public bool MuteGameSounds { get; set; }
 
     public void Save()
     {

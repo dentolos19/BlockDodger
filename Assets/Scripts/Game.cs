@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Advertisements;
 
 public static class Game
 {
@@ -10,6 +11,9 @@ public static class Game
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Settings = Configuration.Load();
+        Settings.Save();
+        if (Application.platform == RuntimePlatform.Android)
+            Advertisement.Initialize("3569004");
     }
 
 }

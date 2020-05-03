@@ -1,0 +1,9 @@
+lastUpgrade=01008
+proj.pluginVersion=0.10.08
+proj.AppId=23467553448
+and.BundleId=com.aprodots.dodgetheblock
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--%0d%0aGoogle+Play+game+services+IDs.%0d%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0d%0a--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--+app_id+--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e23467553448%3c%2fstring%3e%0d%0a++%3c%21--+package_name+--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.aprodots.dodgetheblock%3c%2fstring%3e%0d%0a++%3c%21--+achievement+The+Winner+Of+The+Blue+Power+Core+--%3e%0d%0a++%3cstring+name%3d%22achievement_the_winner_of_the_blue_power_core%22+translatable%3d%22false%22%3eCggIqOWZtlcQAhAC%3c%2fstring%3e%0d%0a++%3c%21--+leaderboard+Overall+High+Scores+--%3e%0d%0a++%3cstring+name%3d%22leaderboard_overall_high_scores%22+translatable%3d%22false%22%3eCggIqOWZtlcQAhAB%3c%2fstring%3e%0d%0a%3c%2fresources%3e%0d%0a
+and.ClientId=
+android.SetupDone=true

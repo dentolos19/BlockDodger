@@ -5,8 +5,8 @@ public class Destroyer : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y <= -6)
-            Destroy(gameObject);
+        if (transform.position.y <= -5)
+            Destroy(transform.gameObject);
     }
 
 }

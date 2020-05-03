@@ -6,42 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
-    private Camera _camera;
-    private Configuration.GameControl _control;
-
-    private bool _isMobilePlatform;
-    private Rigidbody2D _rigidbody;
-    public TextMeshProUGUI counter;
-
-    public float sensitivity = 20;
-
     public static int Score { get; private set; }
-    private static int Deaths { get; set; }
+
+    private int _controlType;
+    private int _deaths;
+    private float _sensitivity;
+    private Camera _camera;
+    private Rigidbody2D _rigidbody;
+
+    public TextMeshProUGUI counter;
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _isMobilePlatform = Application.isMobilePlatform;
-        _control = Game.Settings.Control;
+        _controlType = Game.Settings.ControlType;
+        _sensitivity = Game.Settings.Sensitivity;
         _camera = Camera.main;
-        sensitivity = Game.Settings.Sensitivity;
+        _rigidbody = GetComponent<Rigidbody2D>();
         Score = 0;
+        _deaths = 0;
     }
 
     private void FixedUpdate()
     {
         var input = 0f;
-        switch (_control)
+        switch (_controlType)
         {
-            case Configuration.GameControl.Keyboard:
-                input = Input.GetAxis("Horizontal") * sensitivity * Time.fixedDeltaTime;
+            case 0:
+                input = Input.GetAxis("Horizontal") * _sensitivity * Time.fixedDeltaTime;
                 break;
-            case Configuration.GameControl.Tilt:
-                input = Input.acceleration.x * sensitivity * Time.fixedDeltaTime;
+            case 1:
+                input = Input.acceleration.x * _sensitivity * Time.fixedDeltaTime;
                 break;
-            case Configuration.GameControl.Touch:
-            {
+            case 2:
                 if (Input.touches.Length <= 0)
                     return;
                 var touch = Input.GetTouch(0).position;
@@ -51,7 +47,6 @@ public class Player : MonoBehaviour
                 touchPos.z = 0;
                 transform.position = touchPos;
                 return;
-            }
         }
         var pos = _rigidbody.position + Vector2.right * input;
         pos.x = Mathf.Clamp(pos.x, -6, 6);
@@ -63,28 +58,29 @@ public class Player : MonoBehaviour
     {
         if (other.collider.CompareTag("Goal"))
             return;
-        Deaths++;
-        StartCoroutine(Ended());
+        _deaths++;
+        StartCoroutine(End());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Obstacle"))
+            return;
         Score++;
         counter.text = Score.ToString();
     }
 
-    private IEnumerator Ended()
+    private IEnumerator End()
     {
         Time.timeScale = 1f / 10;
         Time.fixedDeltaTime /= 10;
         yield return new WaitForSeconds(1f / 10);
         Time.timeScale = 1;
         Time.fixedDeltaTime *= 10;
-        if (Deaths >= 10)
+        if (_deaths >= 10)
         {
             if (Advertisement.isInitialized && Advertisement.IsReady())
                 Advertisement.Show();
-            Deaths = 0;
         }
         SceneManager.LoadScene(2);
     }

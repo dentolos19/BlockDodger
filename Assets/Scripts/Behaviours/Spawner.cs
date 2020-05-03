@@ -4,18 +4,12 @@ using Random = System.Random;
 public class Spawner : MonoBehaviour
 {
 
-    private Random _randomizer;
-
     private float _time;
-
+    private readonly Random _randomizer = new Random();
+    
     public GameObject goalPrefab;
     public GameObject obstaclePrefab;
     public Transform[] points;
-
-    private void Start()
-    {
-        _randomizer = new Random();
-    }
 
     private void Update()
     {
@@ -24,7 +18,7 @@ public class Spawner : MonoBehaviour
         Spawn();
         _time = Time.time + 1;
     }
-
+    
     private void Spawn()
     {
         var random = _randomizer.Next(points.Length);

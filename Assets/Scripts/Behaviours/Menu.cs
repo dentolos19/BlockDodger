@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.IO;
+using GooglePlayGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,24 +7,49 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
 
-    public GameObject agreementMenu;
-    public GameObject optionsMenu;
     public GameObject mainMenu;
+    public GameObject optionsMenu;
+    public GameObject agreementMenu;
+
+    public GameObject leaderboardsButton;
     
     public Slider optionsSensitivity;
-    public TMP_Dropdown optionsControls;
-    public Toggle optionsMuteGameSounds;
+    public Toggle optionsMuteSounds;
+    public Dropdown optionsControlType;
+
+    private void Awake()
+    {
+        if (Game.IsPlayServicesEnabled)
+            leaderboardsButton.SetActive(true);
+    }
     
     private void Start()
     {
         optionsSensitivity.value = Game.Settings.Sensitivity;
-        optionsControls.value = (int)Game.Settings.Control;
-        optionsMuteGameSounds.isOn = Game.Settings.MuteGameSounds;
-        if (Game.Settings.PrivacyPolicyAgreed)
+        optionsControlType.value = Game.Settings.ControlType;
+        optionsMuteSounds.isOn = Game.Settings.MuteSounds;
+        if (!Game.Settings.MuteSounds)
+            Music.Instance.Play();
+        if (Game.Settings.IsPrivacyPolicyAgreed)
             return;
         mainMenu.SetActive(false);
         optionsMenu.SetActive(false);
         agreementMenu.SetActive(true);
+    }
+
+    public void Save()
+    {
+        Game.Settings.Sensitivity = optionsSensitivity.value;
+        Game.Settings.ControlType = optionsControlType.value;
+        Game.Settings.MuteSounds = optionsMuteSounds.isOn;
+        Game.Settings.Save();
+        if (Game.Settings.MuteSounds)
+            Music.Instance.Stop();
+        else
+            Music.Instance.Play();
+        mainMenu.SetActive(true);
+        optionsMenu.SetActive(false);
+        agreementMenu.SetActive(false);
     }
 
     public void Play()
@@ -31,16 +57,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void Save()
+    public void GoToOptions()
     {
-        Game.Settings.Sensitivity = optionsSensitivity.value;
-        Game.Settings.Control = (Configuration.GameControl)optionsControls.value;
-        Game.Settings.MuteGameSounds = optionsMuteGameSounds.isOn;
-        if (Game.Settings.MuteGameSounds)
-            Music.Instance.Stop();
-        else
-            Music.Instance.Play();
-        Game.Settings.Save();
+        mainMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+        agreementMenu.SetActive(false);
     }
 
     public void Exit()
@@ -50,16 +71,21 @@ public class Menu : MonoBehaviour
 
     public void Agree()
     {
-        Game.Settings.PrivacyPolicyAgreed = true;
+        Game.Settings.IsPrivacyPolicyAgreed = true;
         Game.Settings.Save();
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
         agreementMenu.SetActive(false);
     }
 
-    public void Redirect()
+    public void LearnMore()
     {
         Application.OpenURL("https://dentolos19.github.io/DodgeTheBlocks/privacy");
+    }
+
+    public void ShowLeaderboards()
+    {
+        Social.ShowLeaderboardUI();
     }
 
 }

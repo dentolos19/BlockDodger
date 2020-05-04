@@ -27,12 +27,14 @@ public class Music : MonoBehaviour
 
     public void Play()
     {
-        _source.Play();
+        if (!_source.isPlaying)
+            _source.Play();
     }
 
     public void Stop()
     {
-        _source.Stop();
+        if (_source.isPlaying)
+            _source.Stop();
     }
 
 }

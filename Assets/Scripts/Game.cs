@@ -18,13 +18,12 @@ public static class Game
             Advertisement.Initialize("3569004");
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
             Advertisement.Initialize("3569005");
-        // if (GooglePlayGames.OurUtils.PlatformUtils.Supported)
-        //     Authenticate();
+        if (GooglePlayGames.OurUtils.PlatformUtils.Supported)
+            Authenticate();
     }
 
     private static void Authenticate()
     {
-        /*
         var config = new PlayGamesClientConfiguration.Builder().Build();
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
@@ -41,7 +40,6 @@ public static class Game
                 Debug.LogError("[GPGS] Play Services Sign-in Failed!");
             }
         });
-        */
     }
     
 }

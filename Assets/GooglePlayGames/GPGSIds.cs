@@ -24,8 +24,7 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_overall_high_scores = "CggIqOWZtlcQAhAB"; // <GPGSID>
-        public const string achievement_the_winner_of_the_blue_power_core = "CggIqOWZtlcQAhAC"; // <GPGSID>
+	public const string leaderboard_overall_high_scores = "CggIqOWZtlcQAhAB"; // <GPGSID>
+	public const string achievement_the_winner_of_the_blue_power_core = "CggIqOWZtlcQAhAC"; // <GPGSID>
 
 }
-

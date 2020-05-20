@@ -4,8 +4,8 @@ using Random = System.Random;
 public class Spawner : MonoBehaviour
 {
 
-    private float _time;
-    private readonly Random _randomizer = new Random();
+    private float mTime;
+    private readonly Random mRandomizer = new Random();
     
     public GameObject goalPrefab;
     public GameObject obstaclePrefab;
@@ -13,15 +13,15 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (!(Time.time >= _time))
+        if (!(Time.time >= mTime))
             return;
         Spawn();
-        _time = Time.time + 1;
+        mTime = Time.time + 1;
     }
     
     private void Spawn()
     {
-        var random = _randomizer.Next(points.Length);
+        var random = mRandomizer.Next(points.Length);
         for (var index = 0; index < points.Length; index++)
             Instantiate(random != index ? obstaclePrefab : goalPrefab, points[index].position, Quaternion.identity);
     }

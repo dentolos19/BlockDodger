@@ -5,7 +5,7 @@ public class Music : MonoBehaviour
 
     public static Music Instance { get; private set; }
     
-    private AudioSource _source;
+    private AudioSource mSource;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class Music : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        _source = GetComponent<AudioSource>();
+        mSource = GetComponent<AudioSource>();
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -27,14 +27,14 @@ public class Music : MonoBehaviour
 
     public void Play()
     {
-        if (!_source.isPlaying)
-            _source.Play();
+        if (!mSource.isPlaying)
+            mSource.Play();
     }
 
     public void Stop()
     {
-        if (_source.isPlaying)
-            _source.Stop();
+        if (mSource.isPlaying)
+            mSource.Stop();
     }
 
 }

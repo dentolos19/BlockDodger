@@ -11,18 +11,10 @@ public class Menu : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject agreementMenu;
 
-    public GameObject leaderboardsButton;
-    
     public Slider optionsSensitivity;
     public Toggle optionsMuteSounds;
     public Dropdown optionsControlType;
 
-    private void Awake()
-    {
-        if (Game.IsPlayServicesEnabled)
-            leaderboardsButton.SetActive(true);
-    }
-    
     private void Start()
     {
         optionsSensitivity.value = Game.Settings.Sensitivity;

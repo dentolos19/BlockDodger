@@ -21,6 +21,27 @@ public class End : MonoBehaviour
         {
             if (Game.IsPlayServicesEnabled)
             {
+                var leaderboard = Social.CreateLeaderboard();
+                leaderboard.id = GPGSIds.leaderboard_overall_high_scores;
+                leaderboard.LoadScores(success =>
+                {
+                    if (!success)
+                        return;
+                    var highestScoreOverall = -1;
+                    foreach (var score in leaderboard.scores)
+                        if (score.rank <= 1)
+                            highestScoreOverall = score.rank;
+                    if (highestScoreOverall <= 0)
+                        return;
+                    if (Player.Score > highestScoreOverall)
+                        Social.ReportProgress(GPGSIds.achievement_the_winner_of_the_blue_power_core, 100, success2 =>
+                        {
+                            if (success2)
+                                Debug.Log("[GPGS] Achieved the winner of the Blue Power Core!");
+                            else
+                                Debug.LogError("[GPGS] Failed to unlock achievement!");
+                        });
+                });
                 Social.ReportScore(Player.Score, GPGSIds.leaderboard_overall_high_scores, success =>
                 {
                     if (success)

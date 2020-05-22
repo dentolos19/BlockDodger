@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
 using GooglePlayGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,6 +47,30 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
+        if (Game.IsPlayServicesEnabled)
+        {
+            var leaderboard = Social.CreateLeaderboard();
+            leaderboard.id = GPGSIds.leaderboard_overall_high_scores;
+            leaderboard.LoadScores(success =>
+            {
+                if (!success)
+                    return;
+                var value = (int)leaderboard.localUserScore.value;
+                if (value > Game.Settings.HighestScore)
+                {
+                    Game.Settings.HighestScore = value;
+                    return;
+                }
+                if (Game.Settings.HighestScore > value)
+                    Social.ReportScore(Game.Settings.HighestScore, GPGSIds.leaderboard_overall_high_scores, success2 =>
+                    {
+                        if (success2)
+                            Debug.Log("[GPGS] Posted to leaderboards!");
+                        else
+                            Debug.LogError("[GPGS] Unable to post to leaderboards!");
+                    });
+            });
+        }
         SceneManager.LoadScene(1);
     }
 

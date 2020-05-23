@@ -97,7 +97,7 @@ public class Menu : MonoBehaviour
 
     public void LearnMore()
     {
-        Application.OpenURL("https://dentolos19.github.io/DodgeTheBlocks/privacy");
+        Application.OpenURL("https://dennise.me/privacy");
     }
 
     public void ShowLeaderboards()

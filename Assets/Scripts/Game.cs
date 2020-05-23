@@ -18,10 +18,13 @@ public static class Game
             Advertisement.Initialize("3569004");
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
             Advertisement.Initialize("3569005");
+        #if UNITY_ANDROID
         if (GooglePlayGames.OurUtils.PlatformUtils.Supported)
             Authenticate();
+        #endif
     }
 
+    #if UNITY_ANDROID
     private static void Authenticate()
     {
         var config = new PlayGamesClientConfiguration.Builder().Build();
@@ -41,5 +44,6 @@ public static class Game
             }
         });
     }
+    #endif
     
 }

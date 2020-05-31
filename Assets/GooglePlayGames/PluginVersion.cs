@@ -19,8 +19,14 @@ namespace GooglePlayGames
     public class PluginVersion
     {
         // Current Version.
+<<<<<<< HEAD
         public const int VersionInt = 0x01009;
         public const string VersionString = "0.10.09";
         public const string VersionKey = "01009";
+=======
+        public const int VersionInt = 0x01008;
+        public const string VersionString = "0.10.08";
+        public const string VersionKey = "01008";
+>>>>>>> DodgeTheBlocksOld/master
     }
 }

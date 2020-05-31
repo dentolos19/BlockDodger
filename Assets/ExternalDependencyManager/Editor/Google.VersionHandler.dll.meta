@@ -2,8 +2,14 @@ fileFormatVersion: 2
 guid: bb6999c8a5ce4ba99688ec579babe5b7
 labels:
 - gvh
+<<<<<<< HEAD
 - gvh_version-1.2.153
 - gvhp_exportpath-ExternalDependencyManager/Editor/Google.VersionHandler.dll
+=======
+- gvh_version-1.2.144
+- gvhp_exportpath-Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll
+- gvhp_exportpath-Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll
+>>>>>>> DodgeTheBlocksOld/master
 - gvhp_targets-editor
 PluginImporter:
   externalObjects: {}

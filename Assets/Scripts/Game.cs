@@ -18,6 +18,7 @@ public static class Game
             Advertisement.Initialize("3569004");
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
             Advertisement.Initialize("3569005");
+<<<<<<< HEAD
         #if UNITY_ANDROID
         if (GooglePlayGames.OurUtils.PlatformUtils.Supported)
             Authenticate();
@@ -25,6 +26,12 @@ public static class Game
     }
 
     #if UNITY_ANDROID
+=======
+        if (GooglePlayGames.OurUtils.PlatformUtils.Supported)
+            Authenticate();
+    }
+
+>>>>>>> DodgeTheBlocksOld/master
     private static void Authenticate()
     {
         var config = new PlayGamesClientConfiguration.Builder().Build();
@@ -44,6 +51,9 @@ public static class Game
             }
         });
     }
+<<<<<<< HEAD
     #endif
+=======
+>>>>>>> DodgeTheBlocksOld/master
     
 }

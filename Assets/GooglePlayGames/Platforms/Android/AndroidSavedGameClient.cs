@@ -21,11 +21,17 @@ namespace GooglePlayGames.Android
         private static readonly Regex ValidFilenameRegex = new Regex(@"\A[a-zA-Z0-9-._~]{1,100}\Z");
 
         private volatile AndroidJavaObject mSnapshotsClient;
+<<<<<<< HEAD
         private volatile AndroidClient mAndroidClient;
 
         public AndroidSavedGameClient(AndroidClient androidClient, AndroidJavaObject account)
         {
             mAndroidClient = androidClient;
+=======
+
+        public AndroidSavedGameClient(AndroidJavaObject account)
+        {
+>>>>>>> DodgeTheBlocksOld/master
             using (var gamesClass = new AndroidJavaClass("com.google.android.gms.games.Games"))
             {
                 mSnapshotsClient = gamesClass.CallStatic<AndroidJavaObject>("getSnapshotsClient",
@@ -156,7 +162,10 @@ namespace GooglePlayGames.Android
                             // result in this method being re-executed. This recursion will continue until
                             // all conflicts are resolved or an error occurs.
                             AndroidConflictResolver resolver = new AndroidConflictResolver(
+<<<<<<< HEAD
                                 this,
+=======
+>>>>>>> DodgeTheBlocksOld/master
                                 mSnapshotsClient,
                                 conflict,
                                 original,
@@ -181,6 +190,7 @@ namespace GooglePlayGames.Android
                         }
                     });
 
+<<<<<<< HEAD
                 AddOnFailureListenerWithSignOut(
                     task,
                     exception => {
@@ -191,6 +201,11 @@ namespace GooglePlayGames.Android
                         completedCallback(status, null);
                     }
                 );
+=======
+                AndroidTaskUtils.AddOnFailureListener(
+                    task,
+                    exception => completedCallback(SavedGameRequestStatus.InternalError, null));
+>>>>>>> DodgeTheBlocksOld/master
             }
         }
 
@@ -292,6 +307,7 @@ namespace GooglePlayGames.Android
                             new AndroidSnapshotMetadata(snapshotMetadata, /* contents= */null));
                     });
 
+<<<<<<< HEAD
                 AddOnFailureListenerWithSignOut(
                     task,
                     exception =>
@@ -301,6 +317,14 @@ namespace GooglePlayGames.Android
                             SavedGameRequestStatus.InternalError :
                             SavedGameRequestStatus.AuthenticationError;
                         callback(status, null);
+=======
+                AndroidTaskUtils.AddOnFailureListener(
+                    task,
+                    exception =>
+                    {
+                        Debug.Log("commitAndClose.failed");
+                        callback(SavedGameRequestStatus.InternalError, null);
+>>>>>>> DodgeTheBlocksOld/master
                     });
             }
         }
@@ -338,6 +362,7 @@ namespace GooglePlayGames.Android
                         }
                     });
 
+<<<<<<< HEAD
                 AddOnFailureListenerWithSignOut(
                     task,
                     exception => {
@@ -348,6 +373,12 @@ namespace GooglePlayGames.Android
                         callback(status, new List<ISavedGameMetadata>());
                     }
                 );
+=======
+                AndroidTaskUtils.AddOnFailureListener(
+                    task,
+                    exception =>
+                        callback(SavedGameRequestStatus.InternalError, new List<ISavedGameMetadata>()));
+>>>>>>> DodgeTheBlocksOld/master
             }
         }
 
@@ -358,6 +389,7 @@ namespace GooglePlayGames.Android
             using (mSnapshotsClient.Call<AndroidJavaObject>("delete", androidMetadata.JavaMetadata)) ;
         }
 
+<<<<<<< HEAD
         private void AddOnFailureListenerWithSignOut(AndroidJavaObject task, Action<AndroidJavaObject> callback)
         {
             AndroidTaskUtils.AddOnFailureListener(
@@ -374,6 +406,8 @@ namespace GooglePlayGames.Android
                 });
         }
 
+=======
+>>>>>>> DodgeTheBlocksOld/master
         private ConflictCallback ToOnGameThread(ConflictCallback conflictCallback)
         {
             return (resolver, original, originalData, unmerged, unmergedData) =>
@@ -398,6 +432,7 @@ namespace GooglePlayGames.Android
             private readonly Action<SavedGameRequestStatus, ISavedGameMetadata> mCompleteCallback;
             private readonly Action mRetryFileOpen;
 
+<<<<<<< HEAD
             private readonly AndroidSavedGameClient mAndroidSavedGameClient;
 
             internal AndroidConflictResolver(AndroidSavedGameClient androidSavedGameClient, AndroidJavaObject snapshotClient, AndroidJavaObject conflict,
@@ -405,6 +440,12 @@ namespace GooglePlayGames.Android
                 Action<SavedGameRequestStatus, ISavedGameMetadata> completeCallback, Action retryOpen)
             {
                 this.mAndroidSavedGameClient = androidSavedGameClient;
+=======
+            internal AndroidConflictResolver(AndroidJavaObject snapshotClient, AndroidJavaObject conflict,
+                AndroidSnapshotMetadata original, AndroidSnapshotMetadata unmerged,
+                Action<SavedGameRequestStatus, ISavedGameMetadata> completeCallback, Action retryOpen)
+            {
+>>>>>>> DodgeTheBlocksOld/master
                 this.mSnapshotsClient = Misc.CheckNotNull(snapshotClient);
                 this.mConflict = Misc.CheckNotNull(conflict);
                 this.mOriginal = Misc.CheckNotNull(original);
@@ -446,6 +487,7 @@ namespace GooglePlayGames.Android
                             task,
                             dataOrConflict => mRetryFileOpen());
 
+<<<<<<< HEAD
                         mAndroidSavedGameClient.AddOnFailureListenerWithSignOut(
                             task,
                             exception => {
@@ -456,6 +498,11 @@ namespace GooglePlayGames.Android
                                 mCompleteCallback(status, null);
                             }
                         );
+=======
+                        AndroidTaskUtils.AddOnFailureListener(
+                            task,
+                            exception => mCompleteCallback(SavedGameRequestStatus.InternalError, null));
+>>>>>>> DodgeTheBlocksOld/master
                     }
                 }
             }
@@ -479,6 +526,7 @@ namespace GooglePlayGames.Android
                         task,
                         dataOrConflict => mRetryFileOpen());
 
+<<<<<<< HEAD
                     mAndroidSavedGameClient.AddOnFailureListenerWithSignOut(
                         task,
                         exception => {
@@ -489,6 +537,11 @@ namespace GooglePlayGames.Android
                             mCompleteCallback(status, null);
                         }
                     );
+=======
+                    AndroidTaskUtils.AddOnFailureListener(
+                        task,
+                        exception => mCompleteCallback(SavedGameRequestStatus.InternalError, null));
+>>>>>>> DodgeTheBlocksOld/master
                 }
             }
         }

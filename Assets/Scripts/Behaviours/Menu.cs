@@ -1,5 +1,8 @@
 ﻿using System.IO;
+<<<<<<< HEAD
 using System.Runtime.InteropServices.WindowsRuntime;
+=======
+>>>>>>> DodgeTheBlocksOld/master
 using GooglePlayGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,10 +15,24 @@ public class Menu : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject agreementMenu;
 
+<<<<<<< HEAD
+=======
+    public GameObject leaderboardsButton;
+    
+>>>>>>> DodgeTheBlocksOld/master
     public Slider optionsSensitivity;
     public Toggle optionsMuteSounds;
     public Dropdown optionsControlType;
 
+<<<<<<< HEAD
+=======
+    private void Awake()
+    {
+        if (Game.IsPlayServicesEnabled)
+            leaderboardsButton.SetActive(true);
+    }
+    
+>>>>>>> DodgeTheBlocksOld/master
     private void Start()
     {
         optionsSensitivity.value = Game.Settings.Sensitivity;
@@ -47,6 +64,7 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
+<<<<<<< HEAD
         if (Game.IsPlayServicesEnabled)
         {
             var leaderboard = Social.CreateLeaderboard();
@@ -71,6 +89,8 @@ public class Menu : MonoBehaviour
                     });
             });
         }
+=======
+>>>>>>> DodgeTheBlocksOld/master
         SceneManager.LoadScene(1);
     }
 
@@ -97,7 +117,11 @@ public class Menu : MonoBehaviour
 
     public void LearnMore()
     {
+<<<<<<< HEAD
         Application.OpenURL("https://dennise.me/privacy");
+=======
+        Application.OpenURL("https://dentolos19.github.io/DodgeTheBlocks/privacy");
+>>>>>>> DodgeTheBlocksOld/master
     }
 
     public void ShowLeaderboards()

@@ -81,6 +81,7 @@ namespace GooglePlayGames.OurUtils
             catch (Exception)
             {
                 PlayGamesHelperObject.RunOnGameThread(() =>
+<<<<<<< HEAD
                     Debug.LogWarning("*** [Play Games Plugin " + PluginVersion.VersionString + "] ERROR: Failed to format DateTime.Now"));
                 timeString = string.Empty;
             }
@@ -90,3 +91,14 @@ namespace GooglePlayGames.OurUtils
         }
     }
 }
+=======
+                    Debug.LogWarning("*** [Play Games Plugin DLL] ERROR: Failed to format DateTime.Now"));
+                timeString = string.Empty;
+            }
+
+            return string.Format("{0} [Play Games Plugin DLL] {1} {2}: {3}",
+                prefix, timeString, logType, msg);
+        }
+    }
+}
+>>>>>>> DodgeTheBlocksOld/master

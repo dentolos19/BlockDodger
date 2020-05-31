@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // <copyright file="NativeClient.cs" company="Google Inc.">
+=======
+﻿// <copyright file="NativeClient.cs" company="Google Inc.">
+>>>>>>> DodgeTheBlocksOld/master
 // Copyright (C) 2014 Google Inc.  All Rights Reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -147,7 +151,11 @@ namespace GooglePlayGames.Android
                                         var account = mTokenClient.GetAccount();
                                         lock (GameServicesLock)
                                         {
+<<<<<<< HEAD
                                             mSavedGameClient = new AndroidSavedGameClient(this, account);
+=======
+                                            mSavedGameClient = new AndroidSavedGameClient(account);
+>>>>>>> DodgeTheBlocksOld/master
                                             mEventsClient = new AndroidEventsClient(account);
                                             bool isCaptureSupported;
                                             using (var resultObject =
@@ -231,7 +239,11 @@ namespace GooglePlayGames.Android
                                         using (var exception = completeTask.Call<AndroidJavaObject>("getException"))
                                         {
                                             GooglePlayGames.OurUtils.Logger.e(
+<<<<<<< HEAD
                                                 "Authentication failed - " + exception.Call<string>("toString"));
+=======
+                                                "Authentication failed" + exception.Call<string>("toString"));
+>>>>>>> DodgeTheBlocksOld/master
                                             InvokeCallbackOnGameThread(callback, SignInStatus.InternalError);
                                         }
                                     }
@@ -261,6 +273,7 @@ namespace GooglePlayGames.Android
             return result => InvokeCallbackOnGameThread(callback, result);
         }
 
+<<<<<<< HEAD
         private static void InvokeCallbackOnGameThread(Action callback)
         {
             if (callback == null)
@@ -274,6 +287,8 @@ namespace GooglePlayGames.Android
             });
         }
 
+=======
+>>>>>>> DodgeTheBlocksOld/master
         private static void InvokeCallbackOnGameThread<T>(Action<T> callback, T data)
         {
             if (callback == null)
@@ -283,6 +298,10 @@ namespace GooglePlayGames.Android
 
             PlayGamesHelperObject.RunOnGameThread(() =>
             {
+<<<<<<< HEAD
+=======
+                GooglePlayGames.OurUtils.Logger.d("Invoking user callback on game thread");
+>>>>>>> DodgeTheBlocksOld/master
                 callback(data);
             });
         }
@@ -311,6 +330,10 @@ namespace GooglePlayGames.Android
 
             PlayGamesHelperObject.RunOnGameThread(() =>
             {
+<<<<<<< HEAD
+=======
+                OurUtils.Logger.d("Invoking user callback on game thread");
+>>>>>>> DodgeTheBlocksOld/master
                 callback(t1, t2);
             });
         }
@@ -457,7 +480,10 @@ namespace GooglePlayGames.Android
         {
             if (mTokenClient == null)
             {
+<<<<<<< HEAD
                 InvokeCallbackOnGameThread(uiCallback);
+=======
+>>>>>>> DodgeTheBlocksOld/master
                 return;
             }
 
@@ -476,7 +502,11 @@ namespace GooglePlayGames.Android
                             mAuthState = AuthState.Unauthenticated;
                             if (uiCallback != null)
                             {
+<<<<<<< HEAD
                                 InvokeCallbackOnGameThread(uiCallback);
+=======
+                                uiCallback();
+>>>>>>> DodgeTheBlocksOld/master
                             }
                         });
                 }
@@ -487,11 +517,19 @@ namespace GooglePlayGames.Android
                 mAuthState = AuthState.Unauthenticated;
                 if (uiCallback != null)
                 {
+<<<<<<< HEAD
                     InvokeCallbackOnGameThread(uiCallback);
                 }
             }
 
             PlayGamesHelperObject.RunOnGameThread(() => SignInHelper.SetPromptUiSignIn(true));
+=======
+                    uiCallback();
+                }
+            }
+
+            SignInHelper.SetPromptUiSignIn(true);
+>>>>>>> DodgeTheBlocksOld/master
         }
 
         ///<summary></summary>
@@ -583,6 +621,7 @@ namespace GooglePlayGames.Android
                         }
                     });
 
+<<<<<<< HEAD
                 AddOnFailureListenerWithSignOut(
                     task,
                     e =>
@@ -591,6 +630,14 @@ namespace GooglePlayGames.Android
                         var statusCode = IsAuthenticated() ?
                             CommonStatusCodes.InternalError : CommonStatusCodes.SignInRequired;
                         InvokeCallbackOnGameThread(callback, statusCode, new PlayerStats());
+=======
+                AndroidTaskUtils.AddOnFailureListener(
+                    task,
+                    e =>
+                    {
+                        Debug.Log("GetPlayerStats failed");
+                        InvokeCallbackOnGameThread(callback, CommonStatusCodes.InternalError, new PlayerStats());
+>>>>>>> DodgeTheBlocksOld/master
                     });
             }
         }
@@ -642,11 +689,19 @@ namespace GooglePlayGames.Android
                                 }
                             });
 
+<<<<<<< HEAD
                         AddOnFailureListenerWithSignOut(
                             task,
                             exception =>
                             {
                                 Debug.Log("LoadUsers failed for index " + i + " with: " + exception.Call<string>("toString"));
+=======
+                        AndroidTaskUtils.AddOnFailureListener(
+                            task,
+                            exception =>
+                            {
+                                Debug.Log("LoadUsers failed for index " + i);
+>>>>>>> DodgeTheBlocksOld/master
                                 lock (countLock)
                                 {
                                     ++resultCount;
@@ -712,11 +767,19 @@ namespace GooglePlayGames.Android
                         }
                     });
 
+<<<<<<< HEAD
                 AddOnFailureListenerWithSignOut(
                     task,
                     exception =>
                     {
                         Debug.Log("LoadAchievements failed: " + exception.Call<string>("toString"));
+=======
+                AndroidTaskUtils.AddOnFailureListener(
+                    task,
+                    exception =>
+                    {
+                        Debug.Log("LoadAchievements failed");
+>>>>>>> DodgeTheBlocksOld/master
                         InvokeCallbackOnGameThread(callback, new Achievement[0]);
                     });
             }
@@ -831,6 +894,7 @@ namespace GooglePlayGames.Android
             }
         }
 
+<<<<<<< HEAD
         private void AddOnFailureListenerWithSignOut(AndroidJavaObject task, Action<AndroidJavaObject> callback)
         {
             AndroidTaskUtils.AddOnFailureListener(
@@ -847,6 +911,8 @@ namespace GooglePlayGames.Android
                 });
         }
 
+=======
+>>>>>>> DodgeTheBlocksOld/master
         private Action<UIStatus> GetUiSignOutCallbackOnGameThread(Action<UIStatus> callback)
         {
             Action<UIStatus> uiCallback = (status) =>
@@ -909,11 +975,19 @@ namespace GooglePlayGames.Android
                             }
                         });
 
+<<<<<<< HEAD
                     AddOnFailureListenerWithSignOut(
                         task,
                         exception =>
                         {
                             Debug.Log("LoadScores failed: " + exception.Call<string>("toString"));
+=======
+                    AndroidTaskUtils.AddOnFailureListener(
+                        task,
+                        exception =>
+                        {
+                            Debug.Log("LoadScores failed");
+>>>>>>> DodgeTheBlocksOld/master
                             InvokeCallbackOnGameThread(callback,
                                 new LeaderboardScoreData(leaderboardId, ResponseStatus.InternalError));
                         });
@@ -948,11 +1022,19 @@ namespace GooglePlayGames.Android
                         }
                     });
 
+<<<<<<< HEAD
                 AddOnFailureListenerWithSignOut(
                     task,
                     exception =>
                     {
                         Debug.Log("LoadMoreScores failed: " + exception.Call<string>("toString"));
+=======
+                AndroidTaskUtils.AddOnFailureListener(
+                    task,
+                    exception =>
+                    {
+                        Debug.Log("LoadMoreScores failed");
+>>>>>>> DodgeTheBlocksOld/master
                         InvokeCallbackOnGameThread(callback,
                             new LeaderboardScoreData(token.LeaderboardId, ResponseStatus.InternalError));
                     });
@@ -1065,7 +1147,11 @@ namespace GooglePlayGames.Android
             lock (GameServicesLock)
             {
                 var account = mTokenClient.GetAccount();
+<<<<<<< HEAD
                 mSavedGameClient = new AndroidSavedGameClient(this, account);
+=======
+                mSavedGameClient = new AndroidSavedGameClient(account);
+>>>>>>> DodgeTheBlocksOld/master
                 mEventsClient = new AndroidEventsClient(account);
                 mVideoClient = new AndroidVideoClient(mVideoClient.IsCaptureSupported(), account);
                 mRealTimeClient = new AndroidRealTimeMultiplayerClient(this, account);

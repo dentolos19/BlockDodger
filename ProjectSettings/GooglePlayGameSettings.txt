@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 lastUpgrade=01009
 proj.pluginVersion=0.10.09
+=======
+lastUpgrade=01008
+proj.pluginVersion=0.10.08
+>>>>>>> DodgeTheBlocksOld/master
 proj.AppId=23467553448
 and.BundleId=com.aprodots.dodgetheblock
 proj.classDir=Assets

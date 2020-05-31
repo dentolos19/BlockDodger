@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 ﻿using TMPro;
+=======
+﻿using System;
+using System.IO;
+using GooglePlayGames;
+using TMPro;
+>>>>>>> DodgeTheBlocksOld/master
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +28,7 @@ public class End : MonoBehaviour
         {
             if (Game.IsPlayServicesEnabled)
             {
+<<<<<<< HEAD
                 var leaderboard = Social.CreateLeaderboard();
                 leaderboard.id = GPGSIds.leaderboard_overall_high_scores;
                 leaderboard.LoadScores(success =>
@@ -42,6 +50,8 @@ public class End : MonoBehaviour
                                 Debug.LogError("[GPGS] Failed to unlock achievement!");
                         });
                 });
+=======
+>>>>>>> DodgeTheBlocksOld/master
                 Social.ReportScore(Player.Score, GPGSIds.leaderboard_overall_high_scores, success =>
                 {
                     if (success)

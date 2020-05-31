@@ -11,7 +11,11 @@ Unity plugin that requires:
      [AARs](https://developer.android.com/studio/projects/android-library.html)).
    * iOS [CocoaPods](https://cocoapods.org/).
    * Version management of transitive dependencies.
+<<<<<<< HEAD
    * Management of Unity Package Manager (UPM) Registries.
+=======
+   * Management of Unity Package Manager Registries.
+>>>>>>> DodgeTheBlocksOld/master
 
 Updated releases are available on
 [GitHub](https://github.com/googlesamples/unity-jar-resolver)
@@ -77,7 +81,11 @@ hosting and provides ways to discover, install, upgrade and uninstall packages.
 This makes it easier for developers to manage plugins within their projects.
 
 However, installing additional package registries requires a few manual steps
+<<<<<<< HEAD
 that can potentially be error prone.  The *Package Manager Resolver*
+=======
+that can potentially be error prone.  The *Unity Package Manager Resolver*
+>>>>>>> DodgeTheBlocksOld/master
 component of this plugin integrates with
 [UPM](https://docs.unity3d.com/Manual/Packages.html) to provide a way to
 auto-install UPM package registries when a `.unitypackage` is installed which
@@ -132,7 +140,11 @@ with Unity version 4.6.8 or higher.
 The *Version Handler* component only works with Unity 5.x or higher as it
 depends upon the `PluginImporter` UnityEditor API.
 
+<<<<<<< HEAD
 The *Package Manager Resolver* component only works with
+=======
+The *Unity Package Manager Resolver* component only works with
+>>>>>>> DodgeTheBlocksOld/master
 Unity 2018.4 or above, when
 [scoped registry](https://docs.unity3d.com/Manual/upm-scoped.html)
 support was added to the Unity Package Manager.
@@ -456,11 +468,19 @@ private static void PostProcessBuild_iOS(BuildTarget target, string buildPath)
 }
 ```
 
+<<<<<<< HEAD
 # Package Manager Resolver Usage
 
 Adding registries to the
 [Unity Package Manager](https://docs.unity3d.com/Manual/Packages.html)
 (UPM) is a manual process. The Package Manager Resolver (PMR) component
+=======
+# Unity Package Manager Resolver Usage
+
+Adding registries to the
+[Unity Package Manager](https://docs.unity3d.com/Manual/Packages.html)
+(UPM) is a manual process. The Unity Package Manager Resolver (UPMR) component
+>>>>>>> DodgeTheBlocksOld/master
 of this plugin makes it easy for plugin maintainers to distribute new UPM
 registry servers and easy for plugin users to manage UPM registry servers.
 
@@ -497,7 +517,11 @@ For example, to add a registry for plugins in the scope `com.coolstuff`:
 </registries>
 ```
 
+<<<<<<< HEAD
 When PMR is loaded it will prompt the developer to add the registry to their
+=======
+When UPMR is loaded it will prompt the developer to add the registry to their
+>>>>>>> DodgeTheBlocksOld/master
 project if it isn't already present in the `Packages/manifest.json` file.
 
 For more information, see Unity's documentation on
@@ -505,6 +529,7 @@ For more information, see Unity's documentation on
 
 ## Managing Registries
 
+<<<<<<< HEAD
 It's possible to add and remove registries that are specified via PMR
 XML configuration files via the following menu options:
 
@@ -551,6 +576,25 @@ will:
 
 PMR can be configured via the `Assets > External Dependency Manager >
 Package Manager Resolver > Settings` menu option:
+=======
+It's possible to add and remove registries that are specified via UPMR
+XML configuration files via the following menu options:
+
+* `Assets > External Dependency Manager > Unity Package Manager Resolver >
+  Add Registries` will prompt the user with a window which allows them to
+  add registries discovered in the project to the Unity Package Manager.
+* `Assets > External Dependency Manager > Unity Package Manager Resolver >
+  Remove Registries` will prompt the user with a window which allows them to
+  remove registries discovered in the project from the Unity Package Manager.
+* `Assets > External Dependency Manager > Unity Package Manager Resolver >
+  Modify Registries` will prompt the user with a window which allows them to
+  add or remove registries discovered in the project.
+
+## Configuration
+
+UPMR can be configured via the `Assets > External Dependency Manager >
+Unity Package Manager Resolver > Settings` menu option:
+>>>>>>> DodgeTheBlocksOld/master
 
 * `Add package registries` when enabled, when the plugin loads or registry
   configuration files change, this will prompt the user to add registries
@@ -558,9 +602,12 @@ Package Manager Resolver > Settings` menu option:
 * `Prompt to add package registries` will cause a developer to be prompted
   with a window that will ask for confirmation before adding registries.
   When this is disabled registries are added silently to the project.
+<<<<<<< HEAD
 * `Prompt to migrate packages` will cause a developer to be prompted
   with a window that will ask for confirmation before migrating packages
   installed in the `Assets` directory to UPM packages.
+=======
+>>>>>>> DodgeTheBlocksOld/master
 * `Enable Analytics Reporting` when enabled, reports the use of the plugin
   to the developers so they can make imrpovements.
 * `Verbose logging` when enabled prints debug information to the console
@@ -738,7 +785,11 @@ need to do the following:
    * Bump the plugin version variable `pluginVersion` in `build.gradle`
    * Update `CHANGELOG.md` with the new version number and changes included in
      the release.
+<<<<<<< HEAD
    * Build the release using `./gradlew release` which performs the following:
+=======
+   * Build the release using `./gradle release` which performs the following:
+>>>>>>> DodgeTheBlocksOld/master
       * Updates `external-dependency-manager-*.unitypackage`
       * Copies the unpacked plugin to the `exploded` directory.
       * Updates template metadata files in the `plugin` directory.
@@ -747,9 +798,18 @@ need to do the following:
         versions of the plugin to be imported into a Unity project which allows
         the most recent version to be activated by the Version Handler
         component.
+<<<<<<< HEAD
    * Create release commit using `./gradlew gitCreateReleaseCommit` which
      performs `git commit -a -m "description from CHANGELOG.md"`
    * Once the release commit is merge, tag the release using
      `./gradlew gitTagRelease` which performs the following:
      * `git tag -a pluginVersion -m "version RELEASE"` to tag the release.
    * Update tags on remote branch using `git push --tag REMOTE HEAD:master`
+=======
+   * Create the release commit and tag the release using
+     `./gradle gitTagRelease` which performs the following:
+     * `git add -A` to pick up all modified, new and deleted files in the tree.
+     * `git commit --amend -a` to create a release commit with the release notes
+       in the change log.
+     * `git tag -a RELEASE -m "version RELEASE"` to tag the release.
+>>>>>>> DodgeTheBlocksOld/master

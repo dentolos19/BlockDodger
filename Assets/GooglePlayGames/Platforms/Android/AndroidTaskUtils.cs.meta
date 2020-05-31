@@ -2,11 +2,7 @@ fileFormatVersion: 2
 guid: 5d045a29538404b2da664bb55de949de
 labels:
 - gvh
-<<<<<<< HEAD
 - gvh_version-0.10.09
-=======
-- gvh_version-0.10.08
->>>>>>> DodgeTheBlocksOld/master
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

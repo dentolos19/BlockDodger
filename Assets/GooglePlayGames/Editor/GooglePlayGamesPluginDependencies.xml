@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <dependencies>
 <!-- Internal library dependency generated at build time. 
@@ -6,22 +5,9 @@
 -->
   <androidPackages>
     <androidPackage spec="com.google.games:gpgs-plugin-support:0.10.09">
-=======
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<dependencies>
-  <!-- Internal library dependency generated at build time. 
-    It also defines the transitive dependencies on play-services
--->
-  <androidPackages>
-    <androidPackage spec="com.google.games:gpgs-plugin-support:0.10.08">
->>>>>>> DodgeTheBlocksOld/master
       <repositories>
         <repository>Assets/GooglePlayGames/Editor/m2repository</repository>
       </repositories>
     </androidPackage>
   </androidPackages>
-<<<<<<< HEAD
 </dependencies>
-=======
-</dependencies>
->>>>>>> DodgeTheBlocksOld/master

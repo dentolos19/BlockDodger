@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
@@ -55,6 +56,12 @@ public class End : MonoBehaviour
         }
         currentScoreCounter.text = "CURRENT SCORE: " + Player.Score;
         highestScoreCounter.text = "HIGHEST SCORE: " + Game.Settings.HighestScore;
+        if (Player.Deaths >= 5)
+        {
+            if (Advertisement.isInitialized && Advertisement.IsReady())
+                Advertisement.Show();
+            Player.Deaths = 0;
+        }
     }
 
     public void BackToMenu()

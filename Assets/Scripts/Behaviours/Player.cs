@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public static int Score { get; private set; }
+    public static int Deaths { get; set; }
 
     private int mControlType;
-    private int mDeaths;
     private float mSensitivity;
+    private bool mDied;
     private Camera mCamera;
     private Rigidbody2D mRigidbody;
 
@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
         mSensitivity = Game.Settings.Sensitivity;
         mCamera = Camera.main;
         mRigidbody = GetComponent<Rigidbody2D>();
-        Score = 0;
-        mDeaths = 0;
     }
 
     private void FixedUpdate()
@@ -56,15 +54,17 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Goal"))
+        if (other.collider.CompareTag("Goal") || mDied)
             return;
-        mDeaths++;
+        Deaths++;
+        mDied = true;
+        Debug.Log(Deaths);
         StartCoroutine(End());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.CompareTag("Obstacle") || mDied)
             return;
         Score++;
         counter.text = Score.ToString();
@@ -77,11 +77,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f / 10);
         Time.timeScale = 1;
         Time.fixedDeltaTime *= 10;
-        if (mDeaths >= 10)
-        {
-            if (Advertisement.isInitialized && Advertisement.IsReady())
-                Advertisement.Show();
-        }
         SceneManager.LoadScene(2);
     }
 

@@ -3294,7 +3294,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1338520486}
-    characterCount: 561
+    characterCount: 560
     spriteCount: 0
     spaceCount: 96
     wordCount: 96

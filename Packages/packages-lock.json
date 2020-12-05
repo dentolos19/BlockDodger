@@ -39,13 +39,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.purchasing.udp": {
-      "version": "2.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.test-framework": {
       "version": "1.1.19",
       "depth": 0,

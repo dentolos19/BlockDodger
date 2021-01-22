@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Assets</Path>
       <Path>Library/PackageCache/com.google.external-dependency-manager@1.2.156</Path>
       <Path>Library/PackageCache/com.google.external-dependency-manager@1.2.162</Path>
       <Path>Library/PackageCache/com.unity.ads@3.5.0</Path>

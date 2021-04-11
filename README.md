@@ -4,7 +4,7 @@
 
 </div>
 
-<h1 align="center">DodgeTheBlocks</h1>
+<h1 align="center">Dodge The Blocks</h1>
 
 <div align="center">
 

@@ -1,0 +1,33 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameMaster : MonoBehaviour
+{
+
+    private bool _gameEnded;
+
+    public float deathSlowness = 10;
+    public GameObject deathMenu;
+
+    private IEnumerator RestartLevel()
+    {
+        var previousTimeScale = Time.timeScale;
+        var previousFixedDeltaTime = Time.fixedDeltaTime;
+        Time.timeScale /= deathSlowness;
+        Time.fixedDeltaTime /= deathSlowness;
+        yield return new WaitForSeconds(1 / deathSlowness);
+        Time.timeScale = previousTimeScale;
+        Time.fixedDeltaTime = previousFixedDeltaTime;
+        deathMenu.SetActive();
+    }
+
+    public void EndGame()
+    {
+        if (_gameEnded)
+            return;
+        StartCoroutine(nameof(RestartLevel));
+        _gameEnded = true;
+    }
+
+}

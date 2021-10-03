@@ -15,7 +15,7 @@ public class GameEvents : MonoBehaviour
     public void OnRetry()
     {
         Game.ResetTime();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnQuit()

@@ -16,9 +16,9 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(Input.acceleration.x);
-        var movement = Input.GetAxis("Horizontal") * movementSpeed * Time.fixedDeltaTime;
-        var position = _rigidbody.position + Vector2.right * movement;
+        var accelerationMovement = Input.acceleration.x * movementSpeed * Time.fixedDeltaTime;
+        var axisMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.fixedDeltaTime;
+        var position = _rigidbody.position + Vector2.right * (axisMovement + accelerationMovement);
         position.x = Mathf.Clamp(position.x, -movementWidth, movementWidth);
         _rigidbody.MovePosition(position);
     }

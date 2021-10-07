@@ -4,17 +4,15 @@ using UnityEngine.SceneManagement;
 public class GameEvents : MonoBehaviour
 {
 
-    public GameObject deathMenu;
-
     public void OnBack()
     {
-        Game.ResetTime();
+        Game.RestoreTime();
         SceneManager.LoadScene(0);
     }
 
     public void OnRetry()
     {
-        Game.ResetTime();
+        Game.RestoreTime();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

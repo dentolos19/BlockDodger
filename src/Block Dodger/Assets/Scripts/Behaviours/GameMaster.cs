@@ -9,8 +9,9 @@ public class GameMaster : MonoBehaviour
     private bool _gameEnded;
 
     public float deathSlowness = 10;
-    public GameObject deathMenu;
     public TextMeshProUGUI scoreCounter;
+    public GameObject menuBackground;
+    public GameObject deathMenu;
 
     private IEnumerator RestartLevel()
     {
@@ -18,6 +19,7 @@ public class GameMaster : MonoBehaviour
         Time.fixedDeltaTime /= deathSlowness;
         yield return new WaitForSeconds(1 / deathSlowness);
         Time.timeScale = 0;
+        menuBackground.SetActive(true);
         deathMenu.SetActive(true);
     }
 

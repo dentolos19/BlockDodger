@@ -6,13 +6,13 @@ public class GameEvents : MonoBehaviour
 
     public void OnBack()
     {
-        Game.RestoreTime();
+        Game.RestoreTimeSettings();
         SceneManager.LoadScene(0);
     }
 
     public void OnRetry()
     {
-        Game.RestoreTime();
+        Game.RestoreTimeSettings();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

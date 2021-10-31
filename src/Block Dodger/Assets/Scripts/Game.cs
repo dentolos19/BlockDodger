@@ -14,7 +14,7 @@ public static class Game
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
-    public static void RestoreTime()
+    public static void RestoreTimeSettings()
     {
         Time.timeScale = InitialTimeScale;
         Time.fixedDeltaTime = InitialFixedDeltaTime;

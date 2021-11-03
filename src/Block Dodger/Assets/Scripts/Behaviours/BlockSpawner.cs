@@ -19,11 +19,11 @@ public class BlockSpawner : MonoBehaviour
 
     private void SpawnBlocks()
     {
-        var safeIndex = Random.Range(0, spawnPoints.Length);
+        var safeIndex = Random.Range(0, spawnPoints.Length); // randomly picks goal's index position
         for (var index = 0; index < spawnPoints.Length; index++)
-            if (safeIndex != index)
+            if (safeIndex != index) // spawns obstacles in all indexes excluding goal's index
                 Instantiate(obstaclePrefab, spawnPoints[index].position, Quaternion.identity);
-        Instantiate(goalPrefab, spawnPoints[safeIndex].position, Quaternion.identity);
+        Instantiate(goalPrefab, spawnPoints[safeIndex].position, Quaternion.identity); // spawns goal at its index
     }
 
 }

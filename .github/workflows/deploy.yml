@@ -1,7 +1,14 @@
-name: Deploy Project
-on: [ workflow_dispatch ]
+name: Deploy Live Game
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Assets/**
+      - Packages/**
+      - ProjectSettings/**
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository

@@ -1,4 +1,4 @@
-name: Automatic Release Workflow
+name: Automatic Deployment Workflow
 on:
   push:
     branches:

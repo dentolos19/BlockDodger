@@ -1,4 +1,4 @@
-name: Unity Build
+name: Live Deployment
 run-name: "${{ github.workflow }} #${{ github.run_number }}"
 concurrency:
   group: ${{ github.workflow }}
@@ -13,8 +13,5 @@ on:
 jobs:
   main:
     uses: dentolos19/ActionsPlayground/.github/workflows/REUSABLE-unity.yml@main
-    with:
-      TARGET_BRANCH: ${{ github.event.repository.default_branch }}
-      RELEASE_TAG: Live
     secrets:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}

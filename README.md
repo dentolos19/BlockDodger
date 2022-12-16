@@ -1,4 +1,4 @@
-# <img src=".github/icon.png" width="32"/> Block Dodger
+# <img src=".github/icon.png" width="48px"/> Block Dodger
 
 A simple endless block dodging game made with Unity!
 

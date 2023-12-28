@@ -4,5 +4,3 @@
 </h1>
 
 A simple endless block dodging game made with Unity!
-
-> **Note**: This project was adapted from [Brackeys' live stream](https://youtu.be/tyAutnOlsfA).

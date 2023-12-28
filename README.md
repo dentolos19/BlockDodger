@@ -1,6 +1,3 @@
-<h1>
-    <img src="docs/icon.png" style="height: 1em;"/>
-    <span>Block Dodger</span>
-</h1>
+# Block Dodger
 
 A simple endless block dodging game made with Unity!

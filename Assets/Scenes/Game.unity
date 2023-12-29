@@ -633,9 +633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df60459e4609f254297bd84078a735ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowMultiplier: 10
-  scoreDisplay: {fileID: 1162395146}
-  gameMenus: {fileID: 173291690}
+  deathSlowMultiplier: 10
+  scoreDisplayDocument: {fileID: 1162395146}
+  gameMenusDocument: {fileID: 173291690}
 --- !u!4 &1132970206
 Transform:
   m_ObjectHideFlags: 0

@@ -6,5 +6,6 @@ public static class Game
     private static void OnStartup()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 }

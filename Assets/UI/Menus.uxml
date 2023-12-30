@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles.uss?fileID=7433441132597879392&amp;guid=5dbf01c3982904440b6eb2daa444cbe6&amp;type=3#Styles" />
+    <ui:VisualElement name="MainMenu" class="Container" style="flex-grow: 1; align-items: center; justify-content: center; visibility: visible;">
+        <ui:VisualElement style="width: 300px; height: 100px; background-image: url(&apos;project://database/Assets/Sprites/Logo.png?fileID=2800000&amp;guid=818c12b270d07a04fb52f7bafdda1692&amp;type=3#Logo&apos;); -unity-background-scale-mode: scale-to-fit;" />
+        <ui:VisualElement style="width: 200px; flex-grow: initial;">
+            <ui:Button text="Start" name="StartButton" style="margin-bottom: 12px;" />
+            <ui:Button text="Settings" name="SettingsButton" style="margin-bottom: 12px;" />
+            <ui:Button text="Quit" name="QuitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="SettingsMenu" class="Container" style="flex-grow: 1; align-items: center; justify-content: center; visibility: hidden;">
+        <ui:Label text="Settings" style="margin-bottom: 24px; font-size: 32px; -unity-text-align: middle-center;" />
+        <ui:Slider label="Sensitivity" high-value="100" name="SensitivitySlider" style="width: 50%;" />
+        <ui:Button text="Back" name="BackButton" style="margin-top: 24px;" />
+    </ui:VisualElement>
+</ui:UXML>

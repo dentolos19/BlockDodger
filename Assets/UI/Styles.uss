@@ -1,0 +1,17 @@
+* {
+    color: white;
+}
+
+Button {
+    color: white;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+}
+
+.Container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

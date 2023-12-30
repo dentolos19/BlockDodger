@@ -1,4 +1,4 @@
-name: Live Deployment
+name: Build Unity Project
 on:
   push:
     paths:
@@ -6,41 +6,36 @@ on:
       - Packages/**
       - ProjectSettings/**
   workflow_dispatch:
-permissions:
-  pages: write
-  id-token: write
 jobs:
-  main:
-    name: Build & Deploy
+  build:
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
-    environment:
-      name: GitHub Pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          # - StandaloneWindows
+          - StandaloneWindows64
+          - Android
+          - WebGL
     steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           lfs: true
-      - name: Restore Cache
-        uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
-      - name: Build Project
-        uses: game-ci/unity-builder@v2
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+      - if: matrix.targetPlatform == 'Android'
+        uses: jlumbroso/free-disk-space@v1.3.1
+      - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          targetPlatform: WebGL
-          buildName: ${{ github.event.repository.name }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v1
+          targetPlatform: ${{ matrix.targetPlatform }}
+      - uses: actions/upload-artifact@v3
         with:
-          path: build/WebGL/${{ github.event.repository.name }}
-      - id: deployment
-        name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}

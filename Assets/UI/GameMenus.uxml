@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles.uss?fileID=7433441132597879392&amp;guid=5dbf01c3982904440b6eb2daa444cbe6&amp;type=3#Styles" />
+    <ui:VisualElement name="PauseMenu" class="Container" style="flex-grow: 1; align-items: center; justify-content: center; visibility: hidden;">
+        <ui:Label text="Paused" style="margin-bottom: 24px; font-size: 32px;" />
+        <ui:Label text="Score: 0" name="ScoreLabel" />
+        <ui:Label text="Highest Score: 0" name="HighestScoreLabel" />
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; margin-top: 24px;">
+            <ui:Button text="Menu" name="MenuButton" />
+            <ui:Button text="Reset" name="ResetButton" />
+            <ui:Button text="Resume" name="ResumeButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="DeathMenu" class="Container" style="flex-grow: 1; align-items: center; justify-content: center; visibility: hidden;">
+        <ui:Label text="Game Over" style="margin-bottom: 24px; font-size: 32px;" />
+        <ui:Label text="Score: 0" name="ScoreLabel" />
+        <ui:Label text="Highest Score: 0" name="HighestScoreLabel" />
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; margin-top: 24px;">
+            <ui:Button text="Menu" name="MenuButton" />
+            <ui:Button text="Restart" name="RestartButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

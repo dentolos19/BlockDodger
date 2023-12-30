@@ -2,22 +2,10 @@ using UnityEngine;
 
 public static class Game
 {
-
-    private static float InitialTimeScale;
-    private static float InitialFixedDeltaTime;
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     private static void OnStartup()
     {
-        InitialTimeScale = Time.timeScale;
-        InitialFixedDeltaTime = Time.fixedDeltaTime;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
-
-    public static void RestoreTimeSettings()
-    {
-        Time.timeScale = InitialTimeScale;
-        Time.fixedDeltaTime = InitialFixedDeltaTime;
-    }
-
 }

@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // TODO: apply sensitivity settings
         var gyroMovement = Input.acceleration.x * movementSpeed * Time.fixedDeltaTime; // gets tilt movement
         var axisMovement = Input.GetAxis("Horizontal") * movementSpeed * Time.fixedDeltaTime; // gets left/right movement
         var newPosition = _rigidbody.position + Vector2.right * (axisMovement + gyroMovement);

@@ -49,6 +49,8 @@ public class GameMaster : MonoBehaviour
         _scoreDisplay.Q<Button>("MenuButton").clicked += () =>
         {
             Time.timeScale = 0;
+            _pauseMenu.Q<Label>("ScoreLabel").text = "Score: " + _score;
+            _deathMenu.Q<Label>("HighestScoreLabel").text = "Highest Score: " + GameStore.HighestScore;
             _scoreDisplay.visible = false;
             _pauseMenu.visible = true;
         };
@@ -67,6 +69,10 @@ public class GameMaster : MonoBehaviour
 
     public void EndGame()
     {
+        if (_score > GameStore.HighestScore)
+            GameStore.HighestScore = _score;
+        _deathMenu.Q<Label>("ScoreLabel").text = "Score: " + _score;
+        _deathMenu.Q<Label>("HighestScoreLabel").text = "Highest Score: " + GameStore.HighestScore;
         StartCoroutine(EndGameCoroutine());
     }
 

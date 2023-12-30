@@ -25,6 +25,7 @@ public class MenuMaster : MonoBehaviour
         startButton.clicked += () => SceneManager.LoadScene(1);
         settingsButton.clicked += () =>
         {
+            _settingsMenu.Q<Slider>("SensitivitySlider").value = GameStore.Sensitivity;
             _mainMenu.visible = false;
             _settingsMenu.visible = true;
         };
@@ -41,7 +42,8 @@ public class MenuMaster : MonoBehaviour
         var backButton = root.Q<Button>("BackButton");
         backButton.clicked += () =>
         {
-            // TODO: apply settings
+
+            GameStore.Sensitivity = sensitivity.value;
             _mainMenu.visible = true;
             _settingsMenu.visible = false;
         };

@@ -3,6 +3,7 @@
 .idea/
 
 # generated files
+/.utmp/
 /Build/
 /Library/
 /Logs/

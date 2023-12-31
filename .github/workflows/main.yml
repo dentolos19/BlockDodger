@@ -6,6 +6,8 @@ on:
       - Packages/**
       - ProjectSettings/**
   workflow_dispatch:
+env:
+  PROJECT_NAME: Block Dodger
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
@@ -24,7 +26,7 @@ jobs:
         with:
           lfs: true
           submodules: recursive
-      - name: Cache Libraries
+      - name: Cache
         uses: actions/cache@v3
         with:
           path: Library
@@ -41,6 +43,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          buildName: ${{ env.PROJECT_NAME }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:

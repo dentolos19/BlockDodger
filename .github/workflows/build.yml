@@ -1,4 +1,5 @@
 name: Build Unity Project
+run-name: "${{ github.workflow }} #${{ github.run_number }}"
 on:
   push:
     paths:
@@ -6,8 +7,9 @@ on:
       - Packages/**
       - ProjectSettings/**
   workflow_dispatch:
-env:
-  PROJECT_NAME: Block Dodger
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
@@ -16,14 +18,14 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          # - StandaloneWindows
           - StandaloneWindows64
+          - StandaloneLinux64
           - Android
-          - WebGL
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           lfs: true
           submodules: recursive
       - name: Cache
@@ -43,9 +45,9 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          buildName: ${{ env.PROJECT_NAME }}
+          buildName: ${{ github.event.repository.name }}
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}

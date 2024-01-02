@@ -43,6 +43,7 @@ jobs:
           path: build/WebGL/${{ github.event.repository.name }}
   deploy:
     name: Deploy
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: GitHub Pages

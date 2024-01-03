@@ -11,7 +11,7 @@ public static class GameStore
 
     public static float Sensitivity
     {
-        get => Get<float>(50);
+        get => Get<float>();
         set => Set<float>(value);
     }
 
